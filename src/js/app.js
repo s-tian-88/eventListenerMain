@@ -1,4 +1,4 @@
-import Board from './class/Board';
+import GamePLay from './class/GamePlay';
 
-const board = new Board(document.body);
-board.createBoard();
+const gamePlay = new GamePLay(document.body);
+gamePlay.start();

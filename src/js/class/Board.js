@@ -7,7 +7,9 @@ export default class Board {
       throw new Error('Container is not HTMLElement');
     };
     this.container = container;
-    this.defaultSpeed = 1000;
+    this.counter = 0;
+    
+    this.boardClick = this.boardClick.bind(this);
   };
 
   createBoard(lvl = 3) {
@@ -23,11 +25,33 @@ export default class Board {
     this.container.innerHTML = html;
 
     const board = this.container.querySelector('.board');
+    board.addEventListener('click',this.boardClick)
 
     for (let i = 0; i < lvl ** 2; i++) {
       const cellElement = document.createElement('div');
       cellElement.classList.add('cell');
       board.appendChild(cellElement);
     };
+    
   };
+
+  getRandomCell (cellObj=null) {
+    const cells = [...this.container.querySelectorAll('.cell')];
+    if (!cellObj) {
+      return random(cells);
+    };
+    const index = cells.indexOf(cellObj);
+    cells.splice(index, 1);
+    return random(cells);
+  };
+
+  boardClick (event) {
+    const target = event.target;
+    if (target.classList.contains('activated')) {
+      target.classList.remove('activated');
+      this.counter += 1;
+    };
+
+  };
+
 };
