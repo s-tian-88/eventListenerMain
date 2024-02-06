@@ -51,7 +51,6 @@ export default class Board {
     if (target.classList.contains('activated')) {
       target.classList.remove('activated');
       this.hits += 1
-      console.log('hits:', this.hits)
     };
 
   };

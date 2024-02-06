@@ -17,9 +17,6 @@ export default class GamePlay extends Board {
     previous.classList.add('activated');
 
     setInterval(() => {
-
-      console.log('interval')
-
       const next = this.getRandomCell(previous);
       previous.classList.remove('activated');
       next.classList.add('activated');
