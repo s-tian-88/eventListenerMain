@@ -7,7 +7,8 @@ export default class Board {
       throw new Error('Container is not HTMLElement');
     };
     this.container = container;
-    this.counter = 0;
+    this.hits = 0;
+    this.misses = 0;
     
     this.boardClick = this.boardClick.bind(this);
   };
@@ -16,8 +17,7 @@ export default class Board {
 
     const html = "<div class='title'>\
       <span class='title-label'>Нашествие гоблинов</span>\
-      </div><div class='controls'>\
-      <button data-id='action-new' class='btn'>Новая игра</button></div>\
+      </div>\
       <div class='board-container'>\
       <div data-id='board' class='board'></div>\
       </div>";
@@ -46,10 +46,12 @@ export default class Board {
   };
 
   boardClick (event) {
+
     const target = event.target;
     if (target.classList.contains('activated')) {
       target.classList.remove('activated');
-      this.counter += 1;
+      this.hits += 1
+      console.log('hits:', this.hits)
     };
 
   };
