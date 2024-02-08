@@ -21,5 +21,10 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
+    'no-multi-str': 'off',
+    'no-plusplus': 'off',
+    // 'import/prefer-default-export': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'no-alert': 'off',
   },
 };

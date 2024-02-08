@@ -13,18 +13,18 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {loader: 'babel-loader'},
+        use: { loader: 'babel-loader' },
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader']
-      }
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin(
       {
-        template: path.resolve(__dirname, 'src', 'index.html')
+        template: path.resolve(__dirname, 'src', 'index.html'),
       },
     ),
   ],
