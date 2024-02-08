@@ -11,6 +11,11 @@ jobs:
   build:
     name: Eslint check and build
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-page
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - uses: actions/checkout#v3
 
