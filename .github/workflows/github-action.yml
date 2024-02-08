@@ -1,0 +1,36 @@
+run-name:
+  Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+    name: Eslint check and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout#v3
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run linters
+        run: yarn lint --fix
+
+      - name: Build
+        run: yarn build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'build'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
